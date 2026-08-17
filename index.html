@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banco de Questões</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">Q</span>
+      <div>
+        <div class="brand-name">Banco de Questões</div>
+        <div class="brand-sub">estude, responda, acompanhe</div>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Seções">
+      <button class="tab active" data-tab="praticar" role="tab" aria-selected="true">Praticar</button>
+      <button class="tab" data-tab="estatisticas" role="tab" aria-selected="false">Estatísticas</button>
+      <button class="tab" data-tab="comentarios" role="tab" aria-selected="false">Comentários</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ================= PRATICAR ================= -->
+  <section id="praticar" class="panel active">
+
+    <div class="quiz-meta">
+      <span class="q-counter"><span id="qIndex">1</span> / <span id="qTotal">--</span></span>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <button id="resetBtn" class="ghost-btn" title="Zerar respostas salvas neste dispositivo">Reiniciar</button>
+    </div>
+
+    <article class="question-card" id="questionCard">
+      <div class="question-head">
+        <span class="q-tag" id="qTag">Q01</span>
+        <span class="q-source" id="qSource"></span>
+      </div>
+      <h2 class="q-text" id="qText">Carregando questão…</h2>
+
+      <ul class="options" id="optionsList" role="listbox" aria-label="Alternativas"></ul>
+
+      <div class="feedback" id="feedback" hidden>
+        <div class="feedback-headline" id="feedbackHeadline"></div>
+        <p class="feedback-exp" id="feedbackExp"></p>
+      </div>
+
+      <div class="card-actions">
+        <button id="answerBtn" class="primary-btn" disabled>Responder</button>
+        <button id="nextBtn" class="primary-btn" hidden>Próxima questão →</button>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= ESTATÍSTICAS ================= -->
+  <section id="estatisticas" class="panel">
+    <div class="stats-grid">
+
+      <div class="stat-card stat-card--chart">
+        <h3>Desempenho geral</h3>
+        <div class="chart-wrap">
+          <canvas id="resultChart" width="220" height="220"></canvas>
+          <div class="chart-center">
+            <span id="chartPct">0%</span>
+            <span class="chart-center-label">acerto</span>
+          </div>
+        </div>
+        <div class="legend">
+          <span class="legend-item"><i class="dot dot--ok"></i>Acertos <b id="legendOk">0</b></span>
+          <span class="legend-item"><i class="dot dot--fail"></i>Erros <b id="legendFail">0</b></span>
+          <span class="legend-item"><i class="dot dot--pending"></i>Não respondidas <b id="legendPending">0</b></span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <h3>Resumo</h3>
+        <dl class="summary-list">
+          <div><dt>Questões respondidas</dt><dd id="sumAnswered">0</dd></div>
+          <div><dt>Total no banco</dt><dd id="sumTotal">0</dd></div>
+          <div><dt>Sequência de acertos atual</dt><dd id="sumStreak">0</dd></div>
+        </dl>
+        <p class="stat-note">Os dados ficam salvos apenas neste navegador/dispositivo (armazenamento local). Ao trocar de computador ou limpar o cache, o histórico é perdido.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= COMENTÁRIOS ================= -->
+  <section id="comentarios" class="panel">
+    <div class="comments-intro">
+      <h3>Comentários dos alunos</h3>
+      <p>Espaço para dúvidas e discussão sobre as questões.</p>
+    </div>
+
+    <!--
+      COMO ATIVAR OS COMENTÁRIOS (Giscus, gratuito, baseado em GitHub Discussions):
+      1. Ative "Discussions" no repositório do GitHub onde este site vai ficar.
+      2. Acesse https://giscus.app, siga o passo a passo (ele gera o script abaixo pronto,
+         já com os IDs do SEU repositório).
+      3. Cole o <script> gerado no lugar do placeholder abaixo.
+      Enquanto isso não for feito, a área de comentários fica vazia.
+    -->
+    <div id="giscus-container" class="giscus-container">
+      <p class="comments-placeholder">
+        Comentários ainda não configurados. Veja a instrução em comentário no código-fonte
+        (arquivo <code>index.html</code>) para ativar via Giscus.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  Feito para estudo pessoal. Fonte das questões indicada em cada card.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="script.js"></script>
+</body>
+</html>
